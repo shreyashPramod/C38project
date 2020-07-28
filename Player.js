@@ -1,5 +1,8 @@
 class Player {
-    constructor(){}
+    constructor(){
+
+        this.rank=null;
+    }
      getCount(){ 
          var playerCountRef = database.ref('playerCount'); 
          playerCountRef.on("value",function(data){ playerCount = data.val();
@@ -7,4 +10,18 @@ class Player {
         }); 
        } update(name){ var playerIndex = "player" + playerCount;
         database.ref(playerIndex).set({ name:name }); } }
+
+        getPlayersAtEnd()
+        {
+           database.ref('PlayerAtEnd').on("value",(data)=>
+           {
+              this.rank = data.val(); 
+           })
+        }
+           static.updatePlayerAtEnd(rank)
+         { 
+              database.ref('/').update({ CarsAtEnd:rank 
+             }) 
+         }
+     
 
