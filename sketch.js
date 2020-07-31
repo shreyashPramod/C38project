@@ -14,16 +14,17 @@ var track,  runer1_img,  runer2_img, runer3_img,runer4_img;
 
 function preload(){
   track = loadImage("images/track.jpg");
-  runer1_img = loadImage("images/car1.png");
-  runer2_img = loadImage("images/car2.png");
-  runer3_img = loadImage("images/car3.png");
-  runer4_img = loadImage("images/car4.png");
-  ground = loadImage("images/ground.png");
+  runer1_img = loadImage("images/boy.png");
+  runer2_img = loadImage("images/boy.png");
+  runer3_img = loadImage("images/boy.png");
+  runer4_img = loadImage("images/boy.png");
+  ground = loadImage(" images/ground.png");
 }
 
 function setup(){
-  canvas = createCanvas(displayWidth - 20, displayHeight-30);
   database = firebase.database();
+  canvas = createCanvas(displayWidth - 20, displayHeight-30);
+ 
   game = new Game();
   game.getState();
   game.start();
@@ -42,3 +43,14 @@ function draw(){
     game.end();
   }
 }
+
+function spawnObstacles() {
+  if(World.frameCount % 60 === 0) {
+  var obstacle = createSprite(400,370,10,40);
+  obstacle=loadImage("images/obstacle");
+  obstacle.velocityY= -6;
+  
+  obstacle.scale = 0.3;
+  obstacle.lifetime = 70;
+  }
+  }

@@ -30,21 +30,21 @@ class Game {
     }
 
     runer1 = createSprite(100,200);
-    runer1.addImage("car1",runer1_img);
+    runer1.addImage("boy",runer1_img);
     runer2 = createSprite(300,200);
-    runer2.addImage("car2",runer2_img);
+    runer2.addImage("boy",runer2_img);
     runer3 = createSprite(500,200);
-    runer3.addImage("car3",runer3_img);
+    runer3.addImage("boy",runer3_img);
     runer4 = createSprite(700,200);
-    runer4.addImage("car4",runer4_img);
-    runerrs = [runer1, runer2, runer3, runer4];
+    runer4.addImage("boy",runer4_img);
+    runers = [runer1, runer2, runer3, runer4];
   }
 
   play(){
     form.hide();
     
     Player.getPlayerInfo();
-    player.getCarsAtEnd();
+   // player.getRsAtEnd();
     
     if(allPlayers !== undefined){
       background(rgb(198,135,103));
@@ -69,9 +69,9 @@ class Game {
           stroke(10);
           fill("red");
           ellipse(x,y,60,60);
-          runners[index - 1].shapeColor = "red";
+          runers[index - 1].shapeColor = "red";
           camera.position.x = displayWidth/2;
-          camera.position.y = cars[index-1].y;
+          camera.position.y =runers[index-1].y;
         }
       }
     }
@@ -84,7 +84,7 @@ class Game {
     if(player.distance > 3860){
       gameState = 2;
       player.rank+=1;
-      Player.updateCarsAtEnd(player.rank);
+      Player.updateRunersAtEnd(player.rank);
     }
    
     drawSprites();
